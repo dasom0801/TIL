@@ -2,9 +2,9 @@
 
 [Javascript 핵심 개념 알아보기 - JS Flow (인프런)](https://www.inflearn.com/course/핵심개념-javascript-flow#)
 
-1. [Data types](###1. Data types)
-2. [Function](###2. Function)
-3. [this](###3. this)
+1. [Data types](#1-data-types)
+2. [Function](#2-function)
+3. [this](#3-this)
 
 ### 1. Data types
 
