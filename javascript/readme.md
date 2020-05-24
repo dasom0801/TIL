@@ -9,3 +9,4 @@
 + [1급 함수](./first-class-function.md)
 + [Factory Function](./factory-function-in-javascript.md)
 + [Not 비트 연산자](./not-bitwise-operator)
++ [Javascript 핵심 개념 알아보기 - JS Flow (인프런)](./js-flow.md)
