@@ -5,6 +5,8 @@
 1. [Data types](#1-data-types)
 2. [Function](#2-function)
 3. [this](#3-this)
+4. [Closure](#4-Closure)
+5. [prototype](#5-prototype)
 
 ### 1. Data types
 
@@ -281,3 +283,134 @@ document.getElementById('a').addEventListener('click', cbFunc);
 
   - this는 인스턴스
 
+### 4. Closure
+
+#### 4-1. 클로저의 정의
+
++ 함수와 그 함수가 선언될 당시의 환경 정보의 조합
++ 클로저는 scope(변수의 유효범위)와 밀접한 연관이 있다. 클로저는 유효범위로 인한 현상/상태가 된다. => 함수 내부에서 생성한 데이터와 그 유효범위로 인해 발생하는 특수한 현상/상태
++ 스코프에서 외부에 정보를 제공할 수 있는 유일한 수단은 해당 정보를 return하는 것. 함수를 return하더라도 최소 선언시에 생성된 스코프와 환경정보는 변하지 않는다. <u>최초 선언시의 정보를 유지한다.</u> 
++ 이점
+  + 접근 권한 제어
+  + 지역 변수 보호
+  + 데이터 보존 및 활용
+
+```javascript
+function a() {
+    var x = 1; // a의 외부에서는 접근할 수 없지만, b의 내부에서 접근 가능하다.
+    return function b() {
+        console.log(x);
+    }
+}
+
+var c = a(); //
+console.log(c()); // 반환된 함수를 통해서 a의 외부에서 내부의 값을 출력할 수 있다. 값을 임의로 바꿀 수는 없다. 바꾸기 위해서는 권한이 필요하다.
+```
+
+```javascript
+funcation a() {
+    var _x = 1;
+    reutrn {
+        get x() { return _x; },
+        set x(v) { return _x = v; }
+    }
+}
+
+var c = a();
+c.x = 10; // 외부에서도 a 내주에 있는 x라는 프로퍼티를 변경할 수 있다.
+```
+
+내부에서 반환을 통해 권한을 주면 외부에서는 부여받은 권한을 통해 내부와 소통할 수 있게된다. _x라는 변수명은 외부에 노출되지 않는다. getter와 setter를 어떻게 설정하느냐에 따라서 _x에 영향을 줄 수도, 안 줄 수도 있다.
+
+무엇을 보여줄지, 요구를 들어줄지 여부, 요구에 어떤 방식으로 반응할지를 a 함수가 결정한다. 스코프는 정의될 때 결정된다. 그렇기 때문에 정의되었을 때의 정보를 그대로 유지할 수 있다.
+```javascript
+function setCounter() {
+    var count = 0;
+    return function() {
+        return ++count;
+    }
+}
+
+var count = setCounter();
+count();
+// 이미 생명주기가 끝난 외부함수의 변수를 참조할 수 있다. 
+```
+
+#### 4-2. 지역변수 만들기
+
+1. 외부로부터 접근을 제한한다.
+
+2. 전역 스코프의 변수를 최소화하는데 도움이 된다.
+
+**클로저를 활용해서 private 멤버와 public 멤버를 구분하는 방법** 
+
+1. 함수에서 지역변수 및 내부함수 등을 생성한다. 
+
+2. 외부에 노출시키고자 하는 멤버들로 구성된 객체를 return한다.
+
+   => return한 객체에 포함되지 않는 멤버들은 전부 private
+
+   => return한 객체에 포홤된 멤버들은 public
+
+```javascript
+var createCar = function(f, p) {
+    var fuel = f;
+    var power = p;
+    var total = 0;
+    return {
+        run: function(km) {
+            var wasteFuel = km / power;
+            if (fuel < wasteFuel) {
+                console.log('이동 불가');
+                return;
+            }
+            fuel -= wasteFuel;
+            total += km;
+        } 
+    }
+}
+
+var car = createCar(10, 2);
+```
+
+### 5. prototype
+
+#### 5-1. prototype, constructor, __proto__
+
+생성자 함수가 있을 때, new 연산자를 써서 인스턴스를 만들면 생성자 함수의` prototype`이라는 프로퍼티가 인스턴스의 `__proto__`라는 프로퍼티에 전달된다. 생성자 함수의 `prototype`과 인스턴스의 `__proto__`프로퍼티는 같은 객체를 참조한다. `__proto__` 프로퍼티를 생략하고 `prototype`이 인스턴스에 연결된 것처럼 쓸 수 있다.
+
+예) 배열 [1, 2, 3]
+
++ `__proto__`는 js가 생성한 프로퍼티, `__proto__`에는 `concat()`, `filter()`, `forEach()`등 Array의 prototype에 있던 프로퍼티들이 있다. 
++ `__proto__`의 constructor는 Array() 
++ `[1,2,3].constructor`는 Array()이고 `[1,2,3].__proto__.constructor`도 Array()이다.
+
+#### 5-2. 메소드 상송 및 동작원리
+
+```javascript
+function Person(n, 3) {
+    this.name = n;
+    this.age = a;
+}
+
+Person.prototype.setOlder = function() {
+    this.age += 1;
+}
+Person.prototype.getAge = function() {
+    return this.age;
+}
+var aa = new Person('aa', 30);
+aa.__proto__.setOlder();
+aa.__proto__.getAge(); // NaN 이때 this는 aa가 아니라 aa.__proto__이기때문
+//__proto__는 생략 가능하니까
+aa.setOlder();
+aa.getAge() // 31
+```
+
+#### 5-3. prototype chaning
+
+Array.prototype의 프로타입에는 배열 메소드가 모두 담겨져있다. Array의 prototype은 객체. 프로토타입이 객체라는 것은 Object 생성자를 통해서 생성된 것이라는 의미 Object.prototype을 상속 받는다. 배열은 Obejct.prototype에 있는 메소드를 사용할 수 있다.
+
+Object.prototype에는 JS 전체의 공통된 메소드들, `hasOwnProperty()`, `toString()`, `valueOf()`, `isPrototypeOf()`이 있다. 모든 데이터 타입들이 프로토타입 체이닝을 통해서 접근 가능.
+
+Object.prototype에 메소드들을 정의하면 모든 데이터 타입들이 상송받기 때문에 객체 타입만이 사용할 메소드들은 Object 생성자에 직접 정의되어 있다. `Object.porytype.~`이 아닌 `Object.~`가 많은 이유.
