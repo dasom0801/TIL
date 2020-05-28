@@ -7,6 +7,7 @@
 3. [this](#3-this)
 4. [Closure](#4-Closure)
 5. [prototype](#5-prototype)
+6. [Class](#6-Class)
 
 ### 1. Data types
 
@@ -414,3 +415,89 @@ Array.prototype의 프로타입에는 배열 메소드가 모두 담겨져있다
 Object.prototype에는 JS 전체의 공통된 메소드들, `hasOwnProperty()`, `toString()`, `valueOf()`, `isPrototypeOf()`이 있다. 모든 데이터 타입들이 프로토타입 체이닝을 통해서 접근 가능.
 
 Object.prototype에 메소드들을 정의하면 모든 데이터 타입들이 상송받기 때문에 객체 타입만이 사용할 메소드들은 Object 생성자에 직접 정의되어 있다. `Object.porytype.~`이 아닌 `Object.~`가 많은 이유.
+
+### 6. Class
+#### 6-1. 클래스
++ 인스턴스: 공통의 속성을 지닌 구체적인 대상
++ 클래스: 인스턴스들의 공통 속성을 모은 추상적인 개념
++ 상위의 클래스를 먼저 정의해야 하위 클래스와 인스턴스를 정의할 수 있다. 상위 클래스의 속성을 지니면서 더 구체적은 속성을 가지는 하위 클래스를 정의한다.
+  | 음식        | 과일        |
+  | ----------- | ----------- |
+  | 상위 클래스 | 하위 클래스 |
+  | super class | sub class   |
++ 예) Array  생성자 함수
+  +  prototype이 아닌 Array 생성자에 직접 할당된 프로퍼티를 static methods, static properties라고 한다. Array 생성자 함수를 new 없이 호출할 때만 의미있다.
+    `isArray()`, `of()`, `arguments` 등
+  + prototype 내부에 정의된 메소드는 인스턴스에서 다이렉트로 접근가능하다. 생성자 함수 내부에 있는 프로퍼티는 다이렉트로 접근할 수 없다.
+#### 6-2. 클래스 상속
+-  Person이라는 클래스를 employee 클래스가 상속 받으려면? `Employee.prototype = new Person()` 은 기존에 있던 employee.prototype 객체를 완전히 새로운 객체로 대체해버린다. 원래 가지고 있던 기능을 다시 부여해야 한다. `Employee.prototype.constructor = Employee` =>  서로 다른 두 클래스가 super, sub 클래스 관계를 갖게 된다.
+  ```javascript
+  function Person(name, age) {
+    this.name = name || '이름 없음';
+    this.age = age || '나이 모름';
+  }
+  Person.prototype.getName = function() {
+    return this.name;
+  }
+  Person.prototype.getAge = function() {
+    return this.age;
+  }
+  function Employee(name, age, position) {
+    this.name = name || '이름 없음';
+    this.age = age || '나이 모름';
+    this.position = position || '직책 모름';
+  }
+  Employee.prototype = new Person();
+  Employee.prototype.constructor = Employee;
+  Employee.prototype.getPosition = function() {
+    return this.position;
+  }
+  var dasom = new Employee('dasom', 32);
+  ```
+- age나 name이 class의 prototype에 담겨있는 것은 좋지않다. 실수로 인스턴스의 name 프로퍼티를 지우고 getName을 호출하면 undefined가 호출되어야 할 상황이지만, prototype chaining을 통해서 prototype의 name이 반환된다. prptotype에 프로퍼티가 아닌 메소드만 존재하도록 한다.
+  ```javascript
+  function Bridge() {}
+  Bridge.prototype = Person.prototype;
+  Employee.prototype = new Bridge();
+  Employee.prototype.constructor = Employee;
+  Employee.prototype.getPosition = function() {
+    return this.position;
+  }
+  ```
+- 함수화 시키기
+  ```javascript
+  var ExtedClass = (function() {
+    function Bridge() {
+      return function(Parent, Child) {
+        Bridge.prototype = Parent.prototype;
+        Child.prototype = new Bridge();
+        Child.prootype.constuctor = Child;
+      }
+    }
+  })();
+  extends Class(Person, Employee);
+  ```
+- ES6 Class
+  ```javascript
+  class Person {
+    constructor(name, age) {
+      this.name = name || '이름 없음';
+      this.age = age || '나이 모름';
+    }
+    getName() {
+      return this.name;
+    }
+    getAge() {
+      return this.age;
+    }
+  }
+  class Employee extends Person {
+    constructor(name, age, position) {
+      super(name, age);
+      this.position = position || '직책 모름';
+    }
+    getPosition() {
+      return this.position
+    }
+  }
+  ```
