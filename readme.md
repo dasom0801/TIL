@@ -12,3 +12,5 @@
 + [Javascript](./javascript)
 + [Javascript Library](./js-library)
 + [React/Redux](./react-and-redux)
++ [SEO](./seo)
++ [SSR](./ssr)
