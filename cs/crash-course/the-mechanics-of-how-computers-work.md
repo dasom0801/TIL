@@ -119,4 +119,53 @@
 
 - 트렌지스터는 속도도 빠르고 깨지기 쉬운 진공관과 달리 고체 상태의 고형물질로 만들어져 있음. 또한 계전기나 진공관보다 더 작게 만들 수 있음 > 훨씬 더 작고 저렴한 컴퓨터 만들기 가능
 
-  
+
+### 3. 부울연산과 논리게이트
+
+**이진**
+
+- 2가지 전기적 상태만으로 중요한 정보를 표시
+- 컴퓨터 안에서 on 상태는 전류가 흐르고 true를 나타내는 상태. off 상태는 전기가 흐르지 않고 false상태를 나타낸다
+- true와 false를 이진수 1과 0으로 표현
+
+**NOT**
+
++ 참이든 거짓이든 하나의 값을 취하고 그것을 부정함
+
++ | INPUT | OUTPUT |
+  | ----- | ------ |
+  | TRUE  | FALSE  |
+  | FALSE | TRUE   |
+
+**AND**
+
++ 모든 입력이 참일 경우에만 참
+
++ | INPUT A | INPUT B | OUTPUT |
+  | ------- | ------- | ------ |
+  | TRUE    | TRUE    | TRUE   |
+  | TRUE    | FALSE   | FALSE  |
+  | FALSE   | TRUE    | FALSE  |
+  | FALSE   | TRUE    | FALSE  |
+
+**OR**
+
++ 하나의 입력만 참이어도 출력이 참이 되는 연산
+
++ | INPUT A | INPUT B | OUTPUT |
+  | ------- | ------- | ------ |
+  | TRUE    | TRUE    | TRUE   |
+  | TRUE    | FALSE   | TRUE   |
+  | FALSE   | TRUE    | TRUE   |
+  | FALSE   | FALSE   | FALSE  |
+
+**XOR**
+
++ OR연산과 비슷한데 모든 입력이 참이면 출력이 거짓이라는 차이가 있음
+
++ | INPUT A | INPUT B | OUTPUT |
+  | ------- | ------- | ------ |
+  | TRUE    | TRUE    | FALSE  |
+  | TRUE    | FALSE   | TRUE   |
+  | FALSE   | TRUE    | TRUE   |
+  | FALSE   | FALSE   | FALSE  |
