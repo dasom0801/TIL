@@ -1,11 +1,3 @@
----
-title: (TIL) 코드스피츠 73 - 1
-date: 2020-05-17 12:05:28
-category: til
-draft: false
----
-
-
 ### PROGRAM & TIMING
 
 프로그램? : 실행될 수 있는 형태로 메모리에 적재된 것. CPU가 실행하려고 하는 것.
