@@ -8,6 +8,7 @@
 - [Algorithm](./algorithm)
 - [Computer Science](./cs)
 - [CSS](./css)
+- [etc](./etc)
 - [HTML](./HTML)
 - [Http/Networks](./http-and-networks)
 - [Javascript](./javascript)
