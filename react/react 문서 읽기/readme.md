@@ -23,6 +23,7 @@
 #### Escape Hatches
 
 - [Synchronizing with Effects](./learn/synchronizing-with-effects.md)
+- [You Might Not Need an Effect](./learn/you-might-not-need-an-effect.md)
 
 ---
 
