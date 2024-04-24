@@ -24,6 +24,7 @@
 
 - [Synchronizing with Effects](./learn/synchronizing-with-effects.md)
 - [You Might Not Need an Effect](./learn/you-might-not-need-an-effect.md)
+- [Lifecycle of Reactive Effects](./learn/lifecycle-of-reactive-effects.md)
 
 ---
 
