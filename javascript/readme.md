@@ -11,6 +11,7 @@
 - [클로저 그리고 렉시컬 환경](./closure.md)
 - [호이스팅](./hoisting.md)
 - [Event Loop](./event-loop.md)
+- [진수 변환 하기](./진수-변환.md)
 
 ---
 
