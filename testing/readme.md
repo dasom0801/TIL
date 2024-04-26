@@ -1,0 +1,1 @@
+- [Vitest 글로벌 설정하기](./vitest-config-globals.md)

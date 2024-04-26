@@ -14,6 +14,7 @@
 - [Javascript](./javascript)
 - [Javascript Library](./js-library)
 - [Next.js](./next-js/)
-- [React](./react)
 - [Performance](./performance)
+- [React](./react)
 - [SEO](./seo)
+- [Testing](./testing/)
