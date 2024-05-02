@@ -1,5 +1,6 @@
 ## CSS
 
+- [content-visibility](./content-visibility.md)
 - [overflow-anchor](./overflow-anchor.md)
 
 - [Basic concepts of grid layout](./basic-concepts-of-grid-layout.md)
