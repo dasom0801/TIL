@@ -4,8 +4,8 @@
 
 #### Describing the UI
 
-- [The Render Tree](./learn/the-render-tree.md)
 - [Keeping Components Pure](./learn/keeping-components-pure.md)
+- [Your UI as a Tree](./learn/the-render-tree.md)
 
 #### Adding Interactivity
 

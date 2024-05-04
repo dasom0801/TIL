@@ -1,6 +1,19 @@
-# The Render Tree
+# Understanding Your UI as a Tree
 
-https://react.dev/learn/understanding-your-ui-as-a-tree#the-render-tree
+https://react.dev/learn/understanding-your-ui-as-a-tree
+
+- 리액트와 다른 많은 UI 라이브러리는 UI를 트리로 모델링한다.
+- 앱을 트리로 생가하면 컴포넌트 간의 관계를 이해하는 데 유용하다.
+
+## 트리로서의 UI
+
+- 트리는 항목 간의 관계 모델이며 UI는 트리 구조를 사용하여 표현되는 경우가 많다.
+- 브라우저는 트리 구조를 사용하여 HTML(DOM)과 CSS를 모델링한다.
+- 모바일 플랫폼에서도 트리를 사용하여 뷰 계층 구조를 표현한다.
+- 리액트도 트리 구조를 사용하여 리액트 앱의 컴포넌트 간의 관게를 관리하고 모델링한다.
+- 트리는 리액트 앱에서 데이터가 흐르는 방식과 렌더링 및 앱 크기를 최적화하는 방법을 이해하는 데 유용한 도구이다.
+
+## 렌더 트리
 
 - 컴포넌트의 주요 특징은 다른 컴포넌트의 컴포넌트를 구성할 수 있다는 것
 - 컴포넌트를 중첩할 때 부모와 자식 컴포넌트라는 개념이 있다.
