@@ -81,11 +81,6 @@ class Stack2 {
 	}
 }
 
-const stack1 = new Stack1();
-const stack2 = new Stack2();
-test(stack1);
-test(stack2);
-
 function test(stack) {
 	stack.push(1);
 	stack.push(2);
@@ -98,3 +93,10 @@ function test(stack) {
 	stack.clear();
 	console.log('size', stack.size());
 }
+
+// const stack1 = new Stack1();
+// const stack2 = new Stack2();
+// test(stack1);
+// test(stack2);
+
+module.exports = { Stack2 };
