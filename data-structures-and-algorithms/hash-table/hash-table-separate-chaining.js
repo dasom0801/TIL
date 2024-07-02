@@ -1,3 +1,4 @@
+const { djb2HashCode } = require('./hash-functions');
 const { LinkedList } = require('../linked-list/linked-list');
 
 // key, value를 저장하는 역할
@@ -14,8 +15,7 @@ class HashTable {
 
 	// 원소를 추가
 	put(key, value) {
-		const position = this.#loseloseHashCode(key);
-		console.log(key, position);
+		const position = djb2HashCode(key);
 		if (!this.#table[position]) {
 			this.#table[position] = new LinkedList();
 		}
@@ -24,7 +24,7 @@ class HashTable {
 
 	// 키에 해당하는 원소를 찾아서 그 값을 반환
 	get(key) {
-		const position = this.#loseloseHashCode(key);
+		const position = djb2HashCode(key);
 		if (!this.#table[position]) {
 			return undefined;
 		}
@@ -41,8 +41,7 @@ class HashTable {
 
 	// 키에 대한 원소를 찾아 삭제
 	remove(key) {
-		const position = this.#loseloseHashCode(key);
-		debugger;
+		const position = djb2HashCode(key);
 		if (!this.#table[position]) {
 			return false;
 		}
@@ -57,25 +56,17 @@ class HashTable {
 			}
 			current = current.next;
 		} while (current);
-		return false;
-	}
 
-	// 해시 함수
-	// 키를 구성하는 문자의 아스키 값을 단순히 더한다.
-	#loseloseHashCode(key) {
-		const hash = key
-			.split('')
-			.reduce((acc, _, i) => acc + key.charCodeAt(i), 0);
-		return hash % 37; // hash를 임의의 숫자로 나눈 나머지를 최종값으로 반환
+		return false;
 	}
 }
 
 const hashTable = new HashTable();
 hashTable.put('John', 'john@email.com');
-hashTable.put('Tyrion', 'tyrion@email.com'); // 16: 충돌 발생
-hashTable.put('Aaron', 'aaron@email.com'); // 16: 충돌 발생
-hashTable.put('Donnie', 'donnie@email.com'); // 13: 충돌 발생
-hashTable.put('Ana', 'ana@email.com'); // 13: 충돌 발생
+hashTable.put('Tyrion', 'tyrion@email.com');
+hashTable.put('Aaron', 'aaron@email.com');
+hashTable.put('Donnie', 'donnie@email.com');
+hashTable.put('Ana', 'ana@email.com');
 console.log(hashTable.get('Donnie'));
 console.log(hashTable.get('Ana'));
 console.log(hashTable.get('John'));
