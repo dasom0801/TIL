@@ -51,8 +51,8 @@ class LinkedList {
 			}
 			// 이전 노드와 다음 노드를 연결 > current 노드는 연결이 끊어진다.
 			previous.next = current.next;
-			this.length--;
 		}
+		this.length--;
 		return current.element;
 	}
 
