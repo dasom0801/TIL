@@ -12,7 +12,7 @@ class ValuePair {
 class HashTable {
 	#table = [];
 
-	// 원소를 추가(또는 기존 원소를 수정)
+	// 원소를 추가
 	put(key, value) {
 		const position = this.#loseloseHashCode(key);
 		console.log(key, position);
