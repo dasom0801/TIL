@@ -5,9 +5,9 @@
 ---
 
 - [A11y](./a11y)
-- [Algorithm](./algorithm)
 - [Computer Science](./cs)
 - [CSS](./css)
+- [Data Structures And Algorithms](./data-structures-and-algorithms/)
 - [etc](./etc)
 - [HTML](./HTML)
 - [Http/Networks](./http-and-networks)
