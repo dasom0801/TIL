@@ -33,17 +33,20 @@ class Queue {
 	}
 }
 
-const queue = new Queue();
-console.log('is empty?', queue.isEmpty());
-queue.enqueue(1);
-queue.enqueue(2);
-queue.enqueue(3);
-queue.print();
-console.log('size', queue.size());
-console.log('front', queue.front());
-queue.dequeue();
-queue.dequeue();
-console.log('size', queue.size());
-console.log('front', queue.front());
-queue.print();
-console.log('is empty?', queue.isEmpty());
+// const queue = new Queue();
+// console.log('is empty?', queue.isEmpty());
+// queue.enqueue(1);
+// queue.enqueue(2);
+// queue.enqueue(3);
+// queue.print();
+// console.log('size', queue.size());
+// console.log('front', queue.front());
+// queue.dequeue();
+// queue.dequeue();
+// console.log('size', queue.size());
+// console.log('front', queue.front());
+// queue.print();
+// console.log('is empty?', queue.isEmpty());
+module.exports = {
+	Queue,
+};
