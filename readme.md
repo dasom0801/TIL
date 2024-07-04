@@ -5,12 +5,13 @@
 ---
 
 - [A11y](./a11y)
+- [Algorithm](./algorithm/)
 - [Computer Science](./cs)
 - [CSS](./css)
-- [Data Structures And Algorithms](./data-structures-and-algorithms/)
+- [Data Structure](./data-structure/)
 - [etc](./etc)
 - [HTML](./HTML)
-- [Http/Networks](./http-and-networks)
+- [Networks](./network)
 - [Javascript](./javascript)
 - [Javascript Library](./js-library)
 - [Next.js](./next-js/)
