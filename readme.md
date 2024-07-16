@@ -19,3 +19,5 @@
 - [React](./react)
 - [SEO](./seo)
 - [Testing](./testing/)
+- [Web API](./Web-API/)
+  - [DOM](./Web-API/DOM/)
