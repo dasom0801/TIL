@@ -21,4 +21,5 @@
 
 **API reference**
 
+- [Screen](./react-navigation/screen.md)
 - [Options for screens](./react-navigation/options-for-screens.md)
