@@ -23,3 +23,7 @@
 
 - [Screen](./react-navigation/screen.md)
 - [Options for screens](./react-navigation/options-for-screens.md)
+
+### react-native-safe-area-context
+
+- [SafeAreaView](./react-native-safe-area-context/safe-area-view.md)
